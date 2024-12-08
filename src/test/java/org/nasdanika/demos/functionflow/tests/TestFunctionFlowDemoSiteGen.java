@@ -91,6 +91,7 @@ public class TestFunctionFlowDemoSiteGen {
 				
 		generateHtmlAppModel("simple\\flow.drawio", resourceSet, demosDir, flowModelsDir, actionModelsDir, progressMonitor);
 		generateHtmlAppModel("groovy-transition\\flow.drawio", resourceSet, demosDir, flowModelsDir, actionModelsDir, progressMonitor);
+		generateHtmlAppModel("java-transition\\flow.drawio", resourceSet, demosDir, flowModelsDir, actionModelsDir, progressMonitor);
 		
 		// Generating a web site
 		String rootActionResource = "actions.yml";

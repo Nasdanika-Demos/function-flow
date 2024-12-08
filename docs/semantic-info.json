@@ -1,0 +1,373 @@
+[
+    {
+        "identifiers": ["uuid:c9e6215d-6ba9-4117-9721-49211f94f905"],
+        "name": "Nasdanika Demos",
+        "icon": "https://docs.nasdanika.org/images/nasdanika-logo.png",
+        "location": "https://github.com/Nasdanika-Demos",
+        "type": {
+            "name": "Action",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "container": {
+            "reference": "children",
+            "identifiers": ["uuid:c9e6215d-6ba9-4117-9721-49211f94f905"]
+        },
+        "identifiers": ["uuid:64a4641c-593c-4171-afa6-b0dfffcfd458"],
+        "name": "Function Flow Demos",
+        "icon": "fas fa-search",
+        "location": "index.html",
+        "type": {
+            "name": "Action",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "container": {
+            "reference": "children",
+            "identifiers": ["uuid:c9e6215d-6ba9-4117-9721-49211f94f905"]
+        },
+        "identifiers": ["uuid:936907e4-088d-4120-94d6-13163d1743ef"],
+        "name": "Search",
+        "icon": "fas fa-search",
+        "location": "search.html",
+        "type": {
+            "name": "Action",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "container": {
+            "reference": "children",
+            "identifiers": ["uuid:c9e6215d-6ba9-4117-9721-49211f94f905"]
+        },
+        "identifiers": ["uuid:f1dbabe7-e95f-4057-b34f-2c5c8e475e26"],
+        "name": "Glossary",
+        "icon": "fas fa-book",
+        "location": "glossary.html",
+        "type": {
+            "name": "Action",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "container": {
+            "reference": "navigation",
+            "identifiers": ["uuid:c9e6215d-6ba9-4117-9721-49211f94f905"]
+        },
+        "identifiers": ["uuid:4fa4bb5d-89c5-479d-b6bb-a2353118dd01"],
+        "name": "Sources",
+        "icon": "fab fa-github",
+        "location": "https://github.com/Nasdanika-Demos/internet-banking-system-c4",
+        "type": {
+            "name": "Action",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "identifiers": ["uuid:123b8a1a-0f93-4e00-a8ca-5787903082d8"],
+        "name": "Simple",
+        "location": "simple/flow.drawio/index.html",
+        "type": {
+            "name": "Domain",
+            "ns-uri": "ecore://nasdanika.org/models/architecture"
+        }
+    },
+    {
+        "container": {
+            "reference": "elements",
+            "identifiers": ["uuid:123b8a1a-0f93-4e00-a8ca-5787903082d8"],
+            "name": "Simple"
+        },
+        "identifiers": ["uuid:5711ee17-ff56-468c-809c-6b3015a5b66f"],
+        "name": "Start",
+        "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABdElEQVR4XmNgwA44gDgGiNeyifA95NGQ/g3CIDZIDIhjoWqIAuFswryPFVJd/5uuKP5ve6gVBYPEQHJsIryPQWrRNSMDJiCeIu5l/N9qex2GQegYpAakFqQHqhcDTJFPccXQSAgrAPWA9KIbFg6yDVmhways/4qZHv+tdtZjGIKOoS6Fe58DGB5P0L0p6qL3v6yy+r+stup/9eqQ/7YHWzAMgmGQXmC4PwGZBTIwBhTI6IpEnXT/n7l45f/dh0//5+QX/hcxUP5vMCMDQx0Mg8wAmQUycC222IQZ+PLdJzA+efbCf09vn/9i7ob/zdeVY6gHmQEyiwGUttAlsRkIw6vXbfyvbWQAdpH1nkYUPeB0Ckqw6IbhMxCEn75697+9q+e/hLbyf8stNXA9ILOoa6A60ECqe5nqkUJMssklMdmAEvZjKiRsUGEBL4HCqJD1wmCGwQBZhQNID0gvumEgQPXiCwbCSChgMbyJCxCqAkByWKsAAOKU3EE8uYN4AAAAAElFTkSuQmCC",
+        "location": "simple/flow.drawio/references/elements/start/index.html",
+        "type": {
+            "name": "Start",
+            "ns-uri": "ecore://nasdanika.org/models/function-flow"
+        }
+    },
+    {
+        "container": {
+            "reference": "decorator",
+            "identifiers": ["uuid:13b55cd2-ee95-43e2-a0d7-f29b5c66b97e"]
+        },
+        "identifiers": ["uuid:3e6bc9db-33cd-4dca-a024-31457921f7a0"],
+        "icon": "far fa-question-circle",
+        "type": {
+            "name": "Link",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "container": {
+            "reference": "outgoingConnections",
+            "identifiers": ["uuid:5711ee17-ff56-468c-809c-6b3015a5b66f"],
+            "name": "Start"
+        },
+        "identifiers": ["uuid:109ef6f2-88ea-4456-a3b7-119d1f0e21fd"],
+        "location": "simple/flow.drawio/references/elements/start/references/outgoingConnections/xk7Y4A1bgm_LZquDNImR-3/index.html",
+        "type": {
+            "name": "Transition",
+            "ns-uri": "ecore://nasdanika.org/models/function-flow"
+        }
+    },
+    {
+        "container": {
+            "reference": "decorator",
+            "identifiers": ["uuid:188cb004-6a3d-4304-b88e-8c39e44bb38e"]
+        },
+        "identifiers": ["uuid:c3f17a44-8d86-4869-bc84-fe8c0b54247c"],
+        "icon": "far fa-question-circle",
+        "type": {
+            "name": "Link",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "container": {
+            "reference": "elements",
+            "identifiers": ["uuid:123b8a1a-0f93-4e00-a8ca-5787903082d8"],
+            "name": "Simple"
+        },
+        "identifiers": ["uuid:9a641747-ed2e-4fd6-97c0-6380681d0d19"],
+        "name": "End",
+        "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABOUlEQVR4XrWVva4BQRTHhdUothIWiWlEh0bp3v4+h/sA6CXoPYH3EJ0n8BQ+OlHozT0/mU3mjl12fZzkn2x2/ue3c+YcI5OJj5yoJxqJ5kY88461xJEXDcuet+sXi3qhlF42Glfx/CvvWMNjvHdDFbLZzaRS0ftWSx87nUjt222NBy85LiQMFXjedt1s3gDihLckOeS6sDxfSwOzoWan/8ofUoJrTipyYYSwHIfMudimL9/X3bqK1Les2V7O25R+7X6PzrlfJfF4OkeqK912/UwELIAjxsE1pAXCgAVwzoy5hrRAGLA+Anx7yW9pCoywKfFjI4lRYs32HiTXHhvipcGeVavsbhDCiKd/eqLLNAjGMGwgkfpyAPbj+ysXZEei64szo8xprcbOHsbDC9Y0gDO7KfNePPUX8AdMzngNRwlZnAAAAABJRU5ErkJggg==",
+        "location": "simple/flow.drawio/references/elements/end/index.html",
+        "type": {
+            "name": "End",
+            "ns-uri": "ecore://nasdanika.org/models/function-flow"
+        }
+    },
+    {
+        "container": {
+            "reference": "decorator",
+            "identifiers": ["uuid:a80f68ad-29aa-44c3-9dfa-73451ff6dc1a"]
+        },
+        "identifiers": ["uuid:86f8f9d5-9a0c-40e6-afe5-bb620875943e"],
+        "icon": "far fa-question-circle",
+        "type": {
+            "name": "Link",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "container": {
+            "reference": "decorator",
+            "identifiers": ["uuid:3b07302b-8cb7-4ecb-92fb-33e1ac3e84dd"]
+        },
+        "identifiers": ["uuid:8f0dfc02-f4d1-42ba-b661-c6a913e74b29"],
+        "icon": "far fa-question-circle",
+        "description": "Domains allow to organize architecture description elements into a hierarchy",
+        "type": {
+            "name": "Link",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "identifiers": ["uuid:b8db2848-7ed9-4daa-a426-c6d8f036bfae"],
+        "name": "Groovy transition",
+        "location": "groovy-transition/flow.drawio/index.html",
+        "type": {
+            "name": "Domain",
+            "ns-uri": "ecore://nasdanika.org/models/architecture"
+        }
+    },
+    {
+        "container": {
+            "reference": "elements",
+            "identifiers": ["uuid:b8db2848-7ed9-4daa-a426-c6d8f036bfae"],
+            "name": "Groovy transition"
+        },
+        "identifiers": ["uuid:bcc11b57-0644-4af8-94b0-c422498f6f53"],
+        "name": "Start",
+        "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABdElEQVR4XmNgwA44gDgGiNeyifA95NGQ/g3CIDZIDIhjoWqIAuFswryPFVJd/5uuKP5ve6gVBYPEQHJsIryPQWrRNSMDJiCeIu5l/N9qex2GQegYpAakFqQHqhcDTJFPccXQSAgrAPWA9KIbFg6yDVmhways/4qZHv+tdtZjGIKOoS6Fe58DGB5P0L0p6qL3v6yy+r+stup/9eqQ/7YHWzAMgmGQXmC4PwGZBTIwBhTI6IpEnXT/n7l45f/dh0//5+QX/hcxUP5vMCMDQx0Mg8wAmQUycC222IQZ+PLdJzA+efbCf09vn/9i7ob/zdeVY6gHmQEyiwGUttAlsRkIw6vXbfyvbWQAdpH1nkYUPeB0Ckqw6IbhMxCEn75697+9q+e/hLbyf8stNXA9ILOoa6A60ECqe5nqkUJMssklMdmAEvZjKiRsUGEBL4HCqJD1wmCGwQBZhQNID0gvumEgQPXiCwbCSChgMbyJCxCqAkByWKsAAOKU3EE8uYN4AAAAAElFTkSuQmCC",
+        "location": "groovy-transition/flow.drawio/references/elements/start/index.html",
+        "type": {
+            "name": "Start",
+            "ns-uri": "ecore://nasdanika.org/models/function-flow"
+        }
+    },
+    {
+        "container": {
+            "reference": "decorator",
+            "identifiers": ["uuid:72fa4fce-1457-4762-a7a2-0067b1da3a47"]
+        },
+        "identifiers": ["uuid:fe2b3aa1-1250-4f0c-8794-6b0f8a83dbd8"],
+        "icon": "far fa-question-circle",
+        "type": {
+            "name": "Link",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "container": {
+            "reference": "outgoingConnections",
+            "identifiers": ["uuid:bcc11b57-0644-4af8-94b0-c422498f6f53"],
+            "name": "Start"
+        },
+        "identifiers": ["uuid:ada8a62d-9520-456a-8d38-2ec196151fd8"],
+        "name": "Groovy transition",
+        "location": "groovy-transition/flow.drawio/references/elements/start/references/outgoingConnections/groovy-transition/index.html",
+        "type": {
+            "name": "Transition",
+            "ns-uri": "ecore://nasdanika.org/models/function-flow"
+        }
+    },
+    {
+        "container": {
+            "reference": "decorator",
+            "identifiers": ["uuid:44981e35-253a-43da-86c9-2af094f45598"]
+        },
+        "identifiers": ["uuid:b8cf3d40-6ee9-4796-a617-dc44592a27ef"],
+        "icon": "far fa-question-circle",
+        "type": {
+            "name": "Link",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "container": {
+            "reference": "elements",
+            "identifiers": ["uuid:b8db2848-7ed9-4daa-a426-c6d8f036bfae"],
+            "name": "Groovy transition"
+        },
+        "identifiers": ["uuid:b40cd530-46a3-4317-9897-b945e3c5595d"],
+        "name": "End",
+        "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABOUlEQVR4XrWVva4BQRTHhdUothIWiWlEh0bp3v4+h/sA6CXoPYH3EJ0n8BQ+OlHozT0/mU3mjl12fZzkn2x2/ue3c+YcI5OJj5yoJxqJ5kY88461xJEXDcuet+sXi3qhlF42Glfx/CvvWMNjvHdDFbLZzaRS0ftWSx87nUjt222NBy85LiQMFXjedt1s3gDihLckOeS6sDxfSwOzoWan/8ofUoJrTipyYYSwHIfMudimL9/X3bqK1Les2V7O25R+7X6PzrlfJfF4OkeqK912/UwELIAjxsE1pAXCgAVwzoy5hrRAGLA+Anx7yW9pCoywKfFjI4lRYs32HiTXHhvipcGeVavsbhDCiKd/eqLLNAjGMGwgkfpyAPbj+ysXZEei64szo8xprcbOHsbDC9Y0gDO7KfNePPUX8AdMzngNRwlZnAAAAABJRU5ErkJggg==",
+        "location": "groovy-transition/flow.drawio/references/elements/end/index.html",
+        "type": {
+            "name": "End",
+            "ns-uri": "ecore://nasdanika.org/models/function-flow"
+        }
+    },
+    {
+        "container": {
+            "reference": "decorator",
+            "identifiers": ["uuid:df9aac98-4fe1-4c46-94ad-ba1e1abdc4bb"]
+        },
+        "identifiers": ["uuid:41a32a15-c566-4252-af07-746ac6dde1c0"],
+        "icon": "far fa-question-circle",
+        "type": {
+            "name": "Link",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "container": {
+            "reference": "decorator",
+            "identifiers": ["uuid:768997c8-8806-42fb-a36a-8ed8071ba2da"]
+        },
+        "identifiers": ["uuid:873d1674-8c59-4645-9c70-5fa01efe316d"],
+        "icon": "far fa-question-circle",
+        "description": "Domains allow to organize architecture description elements into a hierarchy",
+        "type": {
+            "name": "Link",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "identifiers": ["uuid:d1962745-ef0d-4ed2-bfa5-5cad639761fa"],
+        "name": "Java transition",
+        "location": "java-transition/flow.drawio/index.html",
+        "type": {
+            "name": "Domain",
+            "ns-uri": "ecore://nasdanika.org/models/architecture"
+        }
+    },
+    {
+        "container": {
+            "reference": "elements",
+            "identifiers": ["uuid:d1962745-ef0d-4ed2-bfa5-5cad639761fa"],
+            "name": "Java transition"
+        },
+        "identifiers": ["uuid:312eda2e-7479-4f6a-b0d5-da601f1b76e3"],
+        "name": "Start",
+        "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABdElEQVR4XmNgwA44gDgGiNeyifA95NGQ/g3CIDZIDIhjoWqIAuFswryPFVJd/5uuKP5ve6gVBYPEQHJsIryPQWrRNSMDJiCeIu5l/N9qex2GQegYpAakFqQHqhcDTJFPccXQSAgrAPWA9KIbFg6yDVmhways/4qZHv+tdtZjGIKOoS6Fe58DGB5P0L0p6qL3v6yy+r+stup/9eqQ/7YHWzAMgmGQXmC4PwGZBTIwBhTI6IpEnXT/n7l45f/dh0//5+QX/hcxUP5vMCMDQx0Mg8wAmQUycC222IQZ+PLdJzA+efbCf09vn/9i7ob/zdeVY6gHmQEyiwGUttAlsRkIw6vXbfyvbWQAdpH1nkYUPeB0Ckqw6IbhMxCEn75697+9q+e/hLbyf8stNXA9ILOoa6A60ECqe5nqkUJMssklMdmAEvZjKiRsUGEBL4HCqJD1wmCGwQBZhQNID0gvumEgQPXiCwbCSChgMbyJCxCqAkByWKsAAOKU3EE8uYN4AAAAAElFTkSuQmCC",
+        "location": "java-transition/flow.drawio/references/elements/start/index.html",
+        "type": {
+            "name": "Start",
+            "ns-uri": "ecore://nasdanika.org/models/function-flow"
+        }
+    },
+    {
+        "container": {
+            "reference": "decorator",
+            "identifiers": ["uuid:97c6d00a-e528-4695-8176-5ea427358d5e"]
+        },
+        "identifiers": ["uuid:b73fc05d-ecc7-4c07-8475-b4c39974579d"],
+        "icon": "far fa-question-circle",
+        "type": {
+            "name": "Link",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "container": {
+            "reference": "outgoingConnections",
+            "identifiers": ["uuid:312eda2e-7479-4f6a-b0d5-da601f1b76e3"],
+            "name": "Start"
+        },
+        "identifiers": ["uuid:7569d0e9-2ef6-481f-ae32-61dffe48a8b9"],
+        "name": "Java transition",
+        "location": "java-transition/flow.drawio/references/elements/start/references/outgoingConnections/groovy-transition/index.html",
+        "type": {
+            "name": "Transition",
+            "ns-uri": "ecore://nasdanika.org/models/function-flow"
+        }
+    },
+    {
+        "container": {
+            "reference": "decorator",
+            "identifiers": ["uuid:d3fe1ce0-fba0-4912-b313-63f8dd62f48b"]
+        },
+        "identifiers": ["uuid:410ee761-51e5-4b47-90db-a7aa0c04d473"],
+        "icon": "far fa-question-circle",
+        "type": {
+            "name": "Link",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "container": {
+            "reference": "elements",
+            "identifiers": ["uuid:d1962745-ef0d-4ed2-bfa5-5cad639761fa"],
+            "name": "Java transition"
+        },
+        "identifiers": ["uuid:f9ab544a-1a19-4c3e-badd-0535e1495448"],
+        "name": "End",
+        "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABOUlEQVR4XrWVva4BQRTHhdUothIWiWlEh0bp3v4+h/sA6CXoPYH3EJ0n8BQ+OlHozT0/mU3mjl12fZzkn2x2/ue3c+YcI5OJj5yoJxqJ5kY88461xJEXDcuet+sXi3qhlF42Glfx/CvvWMNjvHdDFbLZzaRS0ftWSx87nUjt222NBy85LiQMFXjedt1s3gDihLckOeS6sDxfSwOzoWan/8ofUoJrTipyYYSwHIfMudimL9/X3bqK1Les2V7O25R+7X6PzrlfJfF4OkeqK912/UwELIAjxsE1pAXCgAVwzoy5hrRAGLA+Anx7yW9pCoywKfFjI4lRYs32HiTXHhvipcGeVavsbhDCiKd/eqLLNAjGMGwgkfpyAPbj+ysXZEei64szo8xprcbOHsbDC9Y0gDO7KfNePPUX8AdMzngNRwlZnAAAAABJRU5ErkJggg==",
+        "location": "java-transition/flow.drawio/references/elements/end/index.html",
+        "type": {
+            "name": "End",
+            "ns-uri": "ecore://nasdanika.org/models/function-flow"
+        }
+    },
+    {
+        "container": {
+            "reference": "decorator",
+            "identifiers": ["uuid:65f67c87-dbc9-4d3e-a910-b5e434fc8dd1"]
+        },
+        "identifiers": ["uuid:04d2edf5-6d4d-4a37-90c4-bf33fbca9a30"],
+        "icon": "far fa-question-circle",
+        "type": {
+            "name": "Link",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    },
+    {
+        "container": {
+            "reference": "decorator",
+            "identifiers": ["uuid:c4c543c1-c1be-40bd-b39e-c20b0e699887"]
+        },
+        "identifiers": ["uuid:c1866d76-b2e8-4ee3-8323-e027f8a4ebd2"],
+        "icon": "far fa-question-circle",
+        "description": "Domains allow to organize architecture description elements into a hierarchy",
+        "type": {
+            "name": "Link",
+            "ns-uri": "ecore://app.models.nasdanika.org"
+        }
+    }
+]

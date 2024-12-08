@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="EN">
+  <head>
+    <title>Glossary</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/united/bootstrap.min.css" id="nsd-bootstrap-theme-stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Nasdanika-Models/html-app@master/gen/web-resources/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jstree@3.3.11/dist/themes/default/style.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.1.0/github-markdown.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.21.2/dist/bootstrap-vue.css">
+    <script src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/html-app@master/gen/web-resources/js/common.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/html-app@master/gen/web-resources/js/dark-head.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jstree@3.3.11/dist/jstree.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.21.2/dist/bootstrap-vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nasdanika-Models/html-app@master/gen/web-resources/js/components/table.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9BRJVLK8CC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9BRJVLK8CC');
+</script>    
+
+<script src="search-documents.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/olivernn/lunr.js@v2.3.9/lunr.js"></script>
+
+<script>
+// Script for full-text search of JsTree
+
+window.nsdJsTreeSearchCallback = function(str, node) { 
+    var sf = new $.vakata.search(str, true, { caseSensitive : false, fuzzy : false }); 
+    if (sf.search(node.text).isMatch) {
+		return true;
+	} 
+    let searchResult = this.search(str); 
+    for (const sr in searchResult) {
+        if (searchResult[sr].ref === node.original['data-nsd-label-uuid']) {
+            return true;
+        } 
+    } 
+    return false; 
+}.bind(lunr(function () {
+			  this.ref('id');
+			  this.field('title');
+			  this.field('content');
+
+			  for (const key in searchDocuments) {
+				  let doc = searchDocuments[key];
+				this.add({
+					id: doc['action-uuid'],
+					title: doc.title,
+					path: doc.path,
+					content: doc.content
+				});  
+			  }
+			}));
+</script>
+</head>
+  <body>
+    <div class="container-fluid nsd-app-container">
+      <div class="row">
+        <div class="col nsd-app-header">
+          <a href="https://github.com/Nasdanika-Demos" data-nsd-label-uuid="c9e6215d-6ba9-4117-9721-49211f94f905" class="nsd-app-header-title">
+            <img src="https://docs.nasdanika.org/images/nasdanika-logo.png" class="nsd-app-label-icon">Nasdanika Demos</a>
+          <ul class="nav nsd-app-header-navs">
+            <li class="nav-item">
+              <a href="search.html" data-nsd-label-uuid="936907e4-088d-4120-94d6-13163d1743ef" class="nav-link"><span class="fas fa-search nsd-app-label-icon"></span>Search</a>
+            </li>
+            <li class="nav-item"><span data-nsd-label-uuid="f1dbabe7-e95f-4057-b34f-2c5c8e475e26" class="navbar-text"><span class="fas fa-book nsd-app-label-icon"></span>Glossary</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col nsd-app-navbar">
+          <ul class="navbar navbar-light navbar-expand-lg">
+            <a href="index.html" data-nsd-label-uuid="64a4641c-593c-4171-afa6-b0dfffcfd458" class="navbar-brand"><span class="fas fa-search nsd-app-label-icon"></span>Function Flow Demos</a>
+            <button type="button" data-toggle="collapse" data-target="#nsd_2d" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="nsd_2d" class="collapse navbar-collapse"></div>
+          </ul>
+        </div>
+      </div>
+      <div class="row nsd-app-content-row">
+        <div class="col nsd-app-navigation-panel">
+          <div class="nsd-collapse-panel bg-light text-center"><span data-toggle="collapse" data-target="#nsd-nav-panel-1e3ca536-5474-4ff2-a50c-b10c0327d57f-collapsible" aria-expanded="true" aria-controls="nsd-nav-panel-1e3ca536-5474-4ff2-a50c-b10c0327d57f-collapsible" title="Toggle panel" id="nsd-nav-panel-1e3ca536-5474-4ff2-a50c-b10c0327d57f-collapsible-trigger" class="nsd-collapsible-trigger"><i aria-hidden="true" class="fa"></i></span>
+          </div>
+          <div id="nsd-nav-panel-1e3ca536-5474-4ff2-a50c-b10c0327d57f-collapsible" style="clear:right" class="nsd-collapsible collapse show">
+            <input type="text" id="33b3b3fd-173f-403d-a1ed-3ba73cb575b8-navigation-panel_searchInput" title="Full-text search. You can use wildcards, e.g. 'foo*' or 'f*o'; title or content fields, e.g. 'title:foo* bar'; boosts, e.g. 'foo^10 bar'; fuzzy matches, e.g. 'foo~1'; and term presence, e.g. '+foo bar -baz'" class="form-control mt-1">
+            <div id="33b3b3fd-173f-403d-a1ed-3ba73cb575b8-navigation-panel"></div>
+            <script>$(document).ready( function() {
+$('#33b3b3fd-173f-403d-a1ed-3ba73cb575b8-navigation-panel').jstree(function(tree) { tree.state.filter = function(state) { delete state.core.selected; return state; };  tree.search.search_callback = function(searchStr, node) { if (typeof window.nsdJsTreeSearchCallback === 'function') return window.nsdJsTreeSearchCallback(searchStr, node); var sf = new $.vakata.search(searchStr, true, { caseSensitive : false, fuzzy : false }); return sf.search(node.text).isMatch; }; return tree; }({"core":{"data":[{"a_attr":{"onclick":"window.location='simple/flow.drawio/index.html';"},"children":[{"a_attr":{"onclick":"window.location='simple/flow.drawio/references/elements/start/index.html';"},"data-nsd-label-uuid":"13b55cd2-ee95-43e2-a0d7-f29b5c66b97e","icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABdElEQVR4XmNgwA44gDgGiNeyifA95NGQ/g3CIDZIDIhjoWqIAuFswryPFVJd/5uuKP5ve6gVBYPEQHJsIryPQWrRNSMDJiCeIu5l/N9qex2GQegYpAakFqQHqhcDTJFPccXQSAgrAPWA9KIbFg6yDVmhways/4qZHv+tdtZjGIKOoS6Fe58DGB5P0L0p6qL3v6yy+r+stup/9eqQ/7YHWzAMgmGQXmC4PwGZBTIwBhTI6IpEnXT/n7l45f/dh0//5+QX/hcxUP5vMCMDQx0Mg8wAmQUycC222IQZ+PLdJzA+efbCf09vn/9i7ob/zdeVY6gHmQEyiwGUttAlsRkIw6vXbfyvbWQAdpH1nkYUPeB0Ckqw6IbhMxCEn75697+9q+e/hLbyf8stNXA9ILOoa6A60ECqe5nqkUJMssklMdmAEvZjKiRsUGEBL4HCqJD1wmCGwQBZhQNID0gvumEgQPXiCwbCSChgMbyJCxCqAkByWKsAAOKU3EE8uYN4AAAAAElFTkSuQmCC","id":"nsd-app-nav-item-6a638a06-6abd-4743-96a9-fcc6f64fc176","text":"Start","type":"leaf"},{"a_attr":{"onclick":"window.location='simple/flow.drawio/references/elements/end/index.html';"},"data-nsd-label-uuid":"a80f68ad-29aa-44c3-9dfa-73451ff6dc1a","icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABOUlEQVR4XrWVva4BQRTHhdUothIWiWlEh0bp3v4+h/sA6CXoPYH3EJ0n8BQ+OlHozT0/mU3mjl12fZzkn2x2/ue3c+YcI5OJj5yoJxqJ5kY88461xJEXDcuet+sXi3qhlF42Glfx/CvvWMNjvHdDFbLZzaRS0ftWSx87nUjt222NBy85LiQMFXjedt1s3gDihLckOeS6sDxfSwOzoWan/8ofUoJrTipyYYSwHIfMudimL9/X3bqK1Les2V7O25R+7X6PzrlfJfF4OkeqK912/UwELIAjxsE1pAXCgAVwzoy5hrRAGLA+Anx7yW9pCoywKfFjI4lRYs32HiTXHhvipcGeVavsbhDCiKd/eqLLNAjGMGwgkfpyAPbj+ysXZEei64szo8xprcbOHsbDC9Y0gDO7KfNePPUX8AdMzngNRwlZnAAAAABJRU5ErkJggg==","id":"nsd-app-nav-item-d713b050-ddb6-4d45-9c14-366c8bd2eef3","text":"End","type":"leaf"}],"data-nsd-label-uuid":"3b07302b-8cb7-4ecb-92fb-33e1ac3e84dd","id":"nsd-app-nav-item-11c43bc8-9bae-462a-9839-cb8e3c26f914","text":"Simple"},{"a_attr":{"onclick":"window.location='groovy-transition/flow.drawio/index.html';"},"children":[{"a_attr":{"onclick":"window.location='groovy-transition/flow.drawio/references/elements/start/index.html';"},"data-nsd-label-uuid":"72fa4fce-1457-4762-a7a2-0067b1da3a47","icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABdElEQVR4XmNgwA44gDgGiNeyifA95NGQ/g3CIDZIDIhjoWqIAuFswryPFVJd/5uuKP5ve6gVBYPEQHJsIryPQWrRNSMDJiCeIu5l/N9qex2GQegYpAakFqQHqhcDTJFPccXQSAgrAPWA9KIbFg6yDVmhways/4qZHv+tdtZjGIKOoS6Fe58DGB5P0L0p6qL3v6yy+r+stup/9eqQ/7YHWzAMgmGQXmC4PwGZBTIwBhTI6IpEnXT/n7l45f/dh0//5+QX/hcxUP5vMCMDQx0Mg8wAmQUycC222IQZ+PLdJzA+efbCf09vn/9i7ob/zdeVY6gHmQEyiwGUttAlsRkIw6vXbfyvbWQAdpH1nkYUPeB0Ckqw6IbhMxCEn75697+9q+e/hLbyf8stNXA9ILOoa6A60ECqe5nqkUJMssklMdmAEvZjKiRsUGEBL4HCqJD1wmCGwQBZhQNID0gvumEgQPXiCwbCSChgMbyJCxCqAkByWKsAAOKU3EE8uYN4AAAAAElFTkSuQmCC","id":"nsd-app-nav-item-48939a12-2a40-4452-8c7c-8cbd0146357e","text":"Start","type":"leaf"},{"a_attr":{"onclick":"window.location='groovy-transition/flow.drawio/references/elements/end/index.html';"},"data-nsd-label-uuid":"df9aac98-4fe1-4c46-94ad-ba1e1abdc4bb","icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABOUlEQVR4XrWVva4BQRTHhdUothIWiWlEh0bp3v4+h/sA6CXoPYH3EJ0n8BQ+OlHozT0/mU3mjl12fZzkn2x2/ue3c+YcI5OJj5yoJxqJ5kY88461xJEXDcuet+sXi3qhlF42Glfx/CvvWMNjvHdDFbLZzaRS0ftWSx87nUjt222NBy85LiQMFXjedt1s3gDihLckOeS6sDxfSwOzoWan/8ofUoJrTipyYYSwHIfMudimL9/X3bqK1Les2V7O25R+7X6PzrlfJfF4OkeqK912/UwELIAjxsE1pAXCgAVwzoy5hrRAGLA+Anx7yW9pCoywKfFjI4lRYs32HiTXHhvipcGeVavsbhDCiKd/eqLLNAjGMGwgkfpyAPbj+ysXZEei64szo8xprcbOHsbDC9Y0gDO7KfNePPUX8AdMzngNRwlZnAAAAABJRU5ErkJggg==","id":"nsd-app-nav-item-cb7fc21b-144c-474f-aa95-f1e8f874192a","text":"End","type":"leaf"}],"data-nsd-label-uuid":"768997c8-8806-42fb-a36a-8ed8071ba2da","id":"nsd-app-nav-item-d3b91cb6-9134-4531-8269-fcd27175eea6","text":"Groovy transition"},{"a_attr":{"onclick":"window.location='java-transition/flow.drawio/index.html';"},"children":[{"a_attr":{"onclick":"window.location='java-transition/flow.drawio/references/elements/start/index.html';"},"data-nsd-label-uuid":"97c6d00a-e528-4695-8176-5ea427358d5e","icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABdElEQVR4XmNgwA44gDgGiNeyifA95NGQ/g3CIDZIDIhjoWqIAuFswryPFVJd/5uuKP5ve6gVBYPEQHJsIryPQWrRNSMDJiCeIu5l/N9qex2GQegYpAakFqQHqhcDTJFPccXQSAgrAPWA9KIbFg6yDVmhways/4qZHv+tdtZjGIKOoS6Fe58DGB5P0L0p6qL3v6yy+r+stup/9eqQ/7YHWzAMgmGQXmC4PwGZBTIwBhTI6IpEnXT/n7l45f/dh0//5+QX/hcxUP5vMCMDQx0Mg8wAmQUycC222IQZ+PLdJzA+efbCf09vn/9i7ob/zdeVY6gHmQEyiwGUttAlsRkIw6vXbfyvbWQAdpH1nkYUPeB0Ckqw6IbhMxCEn75697+9q+e/hLbyf8stNXA9ILOoa6A60ECqe5nqkUJMssklMdmAEvZjKiRsUGEBL4HCqJD1wmCGwQBZhQNID0gvumEgQPXiCwbCSChgMbyJCxCqAkByWKsAAOKU3EE8uYN4AAAAAElFTkSuQmCC","id":"nsd-app-nav-item-fcb8d63a-7bca-4a7b-9ee9-c44dd7d18812","text":"Start","type":"leaf"},{"a_attr":{"onclick":"window.location='java-transition/flow.drawio/references/elements/end/index.html';"},"data-nsd-label-uuid":"65f67c87-dbc9-4d3e-a910-b5e434fc8dd1","icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABOUlEQVR4XrWVva4BQRTHhdUothIWiWlEh0bp3v4+h/sA6CXoPYH3EJ0n8BQ+OlHozT0/mU3mjl12fZzkn2x2/ue3c+YcI5OJj5yoJxqJ5kY88461xJEXDcuet+sXi3qhlF42Glfx/CvvWMNjvHdDFbLZzaRS0ftWSx87nUjt222NBy85LiQMFXjedt1s3gDihLckOeS6sDxfSwOzoWan/8ofUoJrTipyYYSwHIfMudimL9/X3bqK1Les2V7O25R+7X6PzrlfJfF4OkeqK912/UwELIAjxsE1pAXCgAVwzoy5hrRAGLA+Anx7yW9pCoywKfFjI4lRYs32HiTXHhvipcGeVavsbhDCiKd/eqLLNAjGMGwgkfpyAPbj+ysXZEei64szo8xprcbOHsbDC9Y0gDO7KfNePPUX8AdMzngNRwlZnAAAAABJRU5ErkJggg==","id":"nsd-app-nav-item-9d3e7ce3-2d2d-4098-b34b-c8eef074ffa4","text":"End","type":"leaf"}],"data-nsd-label-uuid":"c4c543c1-c1be-40bd-b39e-c20b0e699887","id":"nsd-app-nav-item-95beb3e6-f8a9-448c-98ea-7fdfabe17117","text":"Java transition"}]},"search":{"show_only_matches":true,"show_only_matches_children":true},"types":{"leaf":{"icon":"jstree-file"}},"plugins":["state","type","search"],"state":{"key":"33b3b3fd-173f-403d-a1ed-3ba73cb575b8-navigation-panel"}}));
+// Tokens: searchInputSelector, timer, treeSelector
+$('#33b3b3fd-173f-403d-a1ed-3ba73cb575b8-navigation-panel_searchInput').keyup(function () {
+    if (window['nsd_jstTreeSearchTimer_nsd_2n']) { 
+		clearTimeout(window['nsd_jstTreeSearchTimer_nsd_2n']); 
+	}
+    window['nsd_jstTreeSearchTimer_nsd_2n'] = setTimeout(function () {
+      var v = $('#33b3b3fd-173f-403d-a1ed-3ba73cb575b8-navigation-panel_searchInput').val();
+      $('#33b3b3fd-173f-403d-a1ed-3ba73cb575b8-navigation-panel').jstree(true).search(v);
+    }, 250);
+  });
+
+});</script>
+          </div>
+        </div>
+        <div data-nsd-label-uuid="f1dbabe7-e95f-4057-b34f-2c5c8e475e26" data-nsd-action-uris="uuid:f1dbabe7-e95f-4057-b34f-2c5c8e475e26" class="col nsd-app-content-panel">
+          <div class="container-fluid">
+            <div class="row nsd-app-content-panel-title-and-items-row">
+              <div class="col-auto">
+                <h1><span data-nsd-label-uuid="f1dbabe7-e95f-4057-b34f-2c5c8e475e26" class="nsd-app-content-panel-title"><span class="fas fa-book nsd-app-label-icon"></span>Glossary</span>
+                </h1>
+              </div>
+            </div>
+            <div class="row nsd-app-content-panel-content-row">
+              <div class="col">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col">     	<div id="semantic-info-app" class="container-fluid">
+     		<div class="row">
+     			<div class="col">
+					<b-form-group label="Filter" label-for="filter-input" label-cols-sm="auto" label-align-sm="right" label-size="sm" class="mb-0" description="You can use wildcards, e.g. 'foo*' or 'f*o'; title or content fields, e.g. 'title:foo* bar'; boosts, e.g. 'foo^10 bar'; fuzzy matches, e.g. 'foo~1'; and term presence, e.g. '+foo bar -baz'">
+			          <b-input-group size="sm">
+			            <b-form-input id="filter-input" v-model="filter" type="search" placeholder="Type to Search" debounce="700"></b-form-input>
+			
+			            <b-input-group-append>
+			              <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+			            </b-input-group-append>
+			          </b-input-group>
+			        </b-form-group>
+			        
+				    <b-form-checkbox id="identifiers-checkbox" v-model="identifierField" name="identifier-checkbox" value="true">
+				      Identifier(s)
+				    </b-form-checkbox>			        
+			        
+				    <b-form-checkbox id="hideUUID-checkbox" v-model="hideUUID" name="hideUUID-checkbox" value="true">
+				      Hide UUID
+				    </b-form-checkbox>			        
+			        
+				    <b-table striped hover :items="items" :fields="fields">
+				      <template #cell(element)="data">
+				        <a :href="data.value.location">
+					      	<span v-if="data.value.icon">
+					      		<img v-if="data.value.icon.includes('/')" :src="data.value.icon">
+					      		<i v-else :class="data.value.icon"></i>
+					      	</span>
+				        	{{data.value.name}}
+				        
+				      </a></template>	
+				      <template #cell(identifiers)="data">
+				      	<span v-if="data.value.length == 1">
+					        {{data.value[0].value}}
+					        <i class="far fa-copy nsd-copy-to-clipboard" style="cursor:pointer" title="Copy identifier to clipboard" :onclick="data.value[0].onClick"></i> 
+				      	</span>
+				      	<ul v-else>
+				      		<li v-for="item in data.value">
+						        {{item.value}} <i class="far fa-copy nsd-copy-to-clipboard" style="cursor:pointer" title="Copy identifier to clipboard" :onclick="item.onClick"></i> 
+				      		</li>
+				      	</ul>
+				      </template>	
+				    </b-table>
+	        	</div>
+	        </div>	        
+     	</div>
+     
+		<script>		      
+			new Vue({
+				  el: '#semantic-info-app',
+				  data: {
+			        	filter: null,
+			        	semanticInfo: [{"identifiers":["uuid:c9e6215d-6ba9-4117-9721-49211f94f905"],"name":"Nasdanika Demos","icon":"https://docs.nasdanika.org/images/nasdanika-logo.png","location":"https://github.com/Nasdanika-Demos","type":{"name":"Action","ns-uri":"ecore://app.models.nasdanika.org"}},{"container":{"reference":"children","identifiers":["uuid:c9e6215d-6ba9-4117-9721-49211f94f905"]},"identifiers":["uuid:64a4641c-593c-4171-afa6-b0dfffcfd458"],"name":"Function Flow Demos","icon":"fas fa-search","location":"index.html","type":{"name":"Action","ns-uri":"ecore://app.models.nasdanika.org"}},{"container":{"reference":"children","identifiers":["uuid:c9e6215d-6ba9-4117-9721-49211f94f905"]},"identifiers":["uuid:936907e4-088d-4120-94d6-13163d1743ef"],"name":"Search","icon":"fas fa-search","location":"search.html","type":{"name":"Action","ns-uri":"ecore://app.models.nasdanika.org"}},{"container":{"reference":"children","identifiers":["uuid:c9e6215d-6ba9-4117-9721-49211f94f905"]},"identifiers":["uuid:f1dbabe7-e95f-4057-b34f-2c5c8e475e26"],"name":"Glossary","icon":"fas fa-book","location":"glossary.html","type":{"name":"Action","ns-uri":"ecore://app.models.nasdanika.org"}},{"container":{"reference":"navigation","identifiers":["uuid:c9e6215d-6ba9-4117-9721-49211f94f905"]},"identifiers":["uuid:4fa4bb5d-89c5-479d-b6bb-a2353118dd01"],"name":"Sources","icon":"fab fa-github","location":"https://github.com/Nasdanika-Demos/internet-banking-system-c4","type":{"name":"Action","ns-uri":"ecore://app.models.nasdanika.org"}},{"identifiers":["uuid:123b8a1a-0f93-4e00-a8ca-5787903082d8"],"name":"Simple","location":"simple/flow.drawio/index.html","type":{"name":"Domain","ns-uri":"ecore://nasdanika.org/models/architecture"}},{"container":{"reference":"elements","identifiers":["uuid:123b8a1a-0f93-4e00-a8ca-5787903082d8"],"name":"Simple"},"identifiers":["uuid:5711ee17-ff56-468c-809c-6b3015a5b66f"],"name":"Start","icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABdElEQVR4XmNgwA44gDgGiNeyifA95NGQ/g3CIDZIDIhjoWqIAuFswryPFVJd/5uuKP5ve6gVBYPEQHJsIryPQWrRNSMDJiCeIu5l/N9qex2GQegYpAakFqQHqhcDTJFPccXQSAgrAPWA9KIbFg6yDVmhways/4qZHv+tdtZjGIKOoS6Fe58DGB5P0L0p6qL3v6yy+r+stup/9eqQ/7YHWzAMgmGQXmC4PwGZBTIwBhTI6IpEnXT/n7l45f/dh0//5+QX/hcxUP5vMCMDQx0Mg8wAmQUycC222IQZ+PLdJzA+efbCf09vn/9i7ob/zdeVY6gHmQEyiwGUttAlsRkIw6vXbfyvbWQAdpH1nkYUPeB0Ckqw6IbhMxCEn75697+9q+e/hLbyf8stNXA9ILOoa6A60ECqe5nqkUJMssklMdmAEvZjKiRsUGEBL4HCqJD1wmCGwQBZhQNID0gvumEgQPXiCwbCSChgMbyJCxCqAkByWKsAAOKU3EE8uYN4AAAAAElFTkSuQmCC","location":"simple/flow.drawio/references/elements/start/index.html","type":{"name":"Start","ns-uri":"ecore://nasdanika.org/models/function-flow"}},{"container":{"reference":"decorator","identifiers":["uuid:13b55cd2-ee95-43e2-a0d7-f29b5c66b97e"]},"identifiers":["uuid:3e6bc9db-33cd-4dca-a024-31457921f7a0"],"icon":"far fa-question-circle","type":{"name":"Link","ns-uri":"ecore://app.models.nasdanika.org"}},{"container":{"reference":"outgoingConnections","identifiers":["uuid:5711ee17-ff56-468c-809c-6b3015a5b66f"],"name":"Start"},"identifiers":["uuid:109ef6f2-88ea-4456-a3b7-119d1f0e21fd"],"location":"simple/flow.drawio/references/elements/start/references/outgoingConnections/xk7Y4A1bgm_LZquDNImR-3/index.html","type":{"name":"Transition","ns-uri":"ecore://nasdanika.org/models/function-flow"}},{"container":{"reference":"decorator","identifiers":["uuid:188cb004-6a3d-4304-b88e-8c39e44bb38e"]},"identifiers":["uuid:c3f17a44-8d86-4869-bc84-fe8c0b54247c"],"icon":"far fa-question-circle","type":{"name":"Link","ns-uri":"ecore://app.models.nasdanika.org"}},{"container":{"reference":"elements","identifiers":["uuid:123b8a1a-0f93-4e00-a8ca-5787903082d8"],"name":"Simple"},"identifiers":["uuid:9a641747-ed2e-4fd6-97c0-6380681d0d19"],"name":"End","icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABOUlEQVR4XrWVva4BQRTHhdUothIWiWlEh0bp3v4+h/sA6CXoPYH3EJ0n8BQ+OlHozT0/mU3mjl12fZzkn2x2/ue3c+YcI5OJj5yoJxqJ5kY88461xJEXDcuet+sXi3qhlF42Glfx/CvvWMNjvHdDFbLZzaRS0ftWSx87nUjt222NBy85LiQMFXjedt1s3gDihLckOeS6sDxfSwOzoWan/8ofUoJrTipyYYSwHIfMudimL9/X3bqK1Les2V7O25R+7X6PzrlfJfF4OkeqK912/UwELIAjxsE1pAXCgAVwzoy5hrRAGLA+Anx7yW9pCoywKfFjI4lRYs32HiTXHhvipcGeVavsbhDCiKd/eqLLNAjGMGwgkfpyAPbj+ysXZEei64szo8xprcbOHsbDC9Y0gDO7KfNePPUX8AdMzngNRwlZnAAAAABJRU5ErkJggg==","location":"simple/flow.drawio/references/elements/end/index.html","type":{"name":"End","ns-uri":"ecore://nasdanika.org/models/function-flow"}},{"container":{"reference":"decorator","identifiers":["uuid:a80f68ad-29aa-44c3-9dfa-73451ff6dc1a"]},"identifiers":["uuid:86f8f9d5-9a0c-40e6-afe5-bb620875943e"],"icon":"far fa-question-circle","type":{"name":"Link","ns-uri":"ecore://app.models.nasdanika.org"}},{"container":{"reference":"decorator","identifiers":["uuid:3b07302b-8cb7-4ecb-92fb-33e1ac3e84dd"]},"identifiers":["uuid:8f0dfc02-f4d1-42ba-b661-c6a913e74b29"],"icon":"far fa-question-circle","description":"Domains allow to organize architecture description elements into a hierarchy","type":{"name":"Link","ns-uri":"ecore://app.models.nasdanika.org"}},{"identifiers":["uuid:b8db2848-7ed9-4daa-a426-c6d8f036bfae"],"name":"Groovy transition","location":"groovy-transition/flow.drawio/index.html","type":{"name":"Domain","ns-uri":"ecore://nasdanika.org/models/architecture"}},{"container":{"reference":"elements","identifiers":["uuid:b8db2848-7ed9-4daa-a426-c6d8f036bfae"],"name":"Groovy transition"},"identifiers":["uuid:bcc11b57-0644-4af8-94b0-c422498f6f53"],"name":"Start","icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABdElEQVR4XmNgwA44gDgGiNeyifA95NGQ/g3CIDZIDIhjoWqIAuFswryPFVJd/5uuKP5ve6gVBYPEQHJsIryPQWrRNSMDJiCeIu5l/N9qex2GQegYpAakFqQHqhcDTJFPccXQSAgrAPWA9KIbFg6yDVmhways/4qZHv+tdtZjGIKOoS6Fe58DGB5P0L0p6qL3v6yy+r+stup/9eqQ/7YHWzAMgmGQXmC4PwGZBTIwBhTI6IpEnXT/n7l45f/dh0//5+QX/hcxUP5vMCMDQx0Mg8wAmQUycC222IQZ+PLdJzA+efbCf09vn/9i7ob/zdeVY6gHmQEyiwGUttAlsRkIw6vXbfyvbWQAdpH1nkYUPeB0Ckqw6IbhMxCEn75697+9q+e/hLbyf8stNXA9ILOoa6A60ECqe5nqkUJMssklMdmAEvZjKiRsUGEBL4HCqJD1wmCGwQBZhQNID0gvumEgQPXiCwbCSChgMbyJCxCqAkByWKsAAOKU3EE8uYN4AAAAAElFTkSuQmCC","location":"groovy-transition/flow.drawio/references/elements/start/index.html","type":{"name":"Start","ns-uri":"ecore://nasdanika.org/models/function-flow"}},{"container":{"reference":"decorator","identifiers":["uuid:72fa4fce-1457-4762-a7a2-0067b1da3a47"]},"identifiers":["uuid:fe2b3aa1-1250-4f0c-8794-6b0f8a83dbd8"],"icon":"far fa-question-circle","type":{"name":"Link","ns-uri":"ecore://app.models.nasdanika.org"}},{"container":{"reference":"outgoingConnections","identifiers":["uuid:bcc11b57-0644-4af8-94b0-c422498f6f53"],"name":"Start"},"identifiers":["uuid:ada8a62d-9520-456a-8d38-2ec196151fd8"],"name":"Groovy transition","location":"groovy-transition/flow.drawio/references/elements/start/references/outgoingConnections/groovy-transition/index.html","type":{"name":"Transition","ns-uri":"ecore://nasdanika.org/models/function-flow"}},{"container":{"reference":"decorator","identifiers":["uuid:44981e35-253a-43da-86c9-2af094f45598"]},"identifiers":["uuid:b8cf3d40-6ee9-4796-a617-dc44592a27ef"],"icon":"far fa-question-circle","type":{"name":"Link","ns-uri":"ecore://app.models.nasdanika.org"}},{"container":{"reference":"elements","identifiers":["uuid:b8db2848-7ed9-4daa-a426-c6d8f036bfae"],"name":"Groovy transition"},"identifiers":["uuid:b40cd530-46a3-4317-9897-b945e3c5595d"],"name":"End","icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABOUlEQVR4XrWVva4BQRTHhdUothIWiWlEh0bp3v4+h/sA6CXoPYH3EJ0n8BQ+OlHozT0/mU3mjl12fZzkn2x2/ue3c+YcI5OJj5yoJxqJ5kY88461xJEXDcuet+sXi3qhlF42Glfx/CvvWMNjvHdDFbLZzaRS0ftWSx87nUjt222NBy85LiQMFXjedt1s3gDihLckOeS6sDxfSwOzoWan/8ofUoJrTipyYYSwHIfMudimL9/X3bqK1Les2V7O25R+7X6PzrlfJfF4OkeqK912/UwELIAjxsE1pAXCgAVwzoy5hrRAGLA+Anx7yW9pCoywKfFjI4lRYs32HiTXHhvipcGeVavsbhDCiKd/eqLLNAjGMGwgkfpyAPbj+ysXZEei64szo8xprcbOHsbDC9Y0gDO7KfNePPUX8AdMzngNRwlZnAAAAABJRU5ErkJggg==","location":"groovy-transition/flow.drawio/references/elements/end/index.html","type":{"name":"End","ns-uri":"ecore://nasdanika.org/models/function-flow"}},{"container":{"reference":"decorator","identifiers":["uuid:df9aac98-4fe1-4c46-94ad-ba1e1abdc4bb"]},"identifiers":["uuid:41a32a15-c566-4252-af07-746ac6dde1c0"],"icon":"far fa-question-circle","type":{"name":"Link","ns-uri":"ecore://app.models.nasdanika.org"}},{"container":{"reference":"decorator","identifiers":["uuid:768997c8-8806-42fb-a36a-8ed8071ba2da"]},"identifiers":["uuid:873d1674-8c59-4645-9c70-5fa01efe316d"],"icon":"far fa-question-circle","description":"Domains allow to organize architecture description elements into a hierarchy","type":{"name":"Link","ns-uri":"ecore://app.models.nasdanika.org"}},{"identifiers":["uuid:d1962745-ef0d-4ed2-bfa5-5cad639761fa"],"name":"Java transition","location":"java-transition/flow.drawio/index.html","type":{"name":"Domain","ns-uri":"ecore://nasdanika.org/models/architecture"}},{"container":{"reference":"elements","identifiers":["uuid:d1962745-ef0d-4ed2-bfa5-5cad639761fa"],"name":"Java transition"},"identifiers":["uuid:312eda2e-7479-4f6a-b0d5-da601f1b76e3"],"name":"Start","icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABdElEQVR4XmNgwA44gDgGiNeyifA95NGQ/g3CIDZIDIhjoWqIAuFswryPFVJd/5uuKP5ve6gVBYPEQHJsIryPQWrRNSMDJiCeIu5l/N9qex2GQegYpAakFqQHqhcDTJFPccXQSAgrAPWA9KIbFg6yDVmhways/4qZHv+tdtZjGIKOoS6Fe58DGB5P0L0p6qL3v6yy+r+stup/9eqQ/7YHWzAMgmGQXmC4PwGZBTIwBhTI6IpEnXT/n7l45f/dh0//5+QX/hcxUP5vMCMDQx0Mg8wAmQUycC222IQZ+PLdJzA+efbCf09vn/9i7ob/zdeVY6gHmQEyiwGUttAlsRkIw6vXbfyvbWQAdpH1nkYUPeB0Ckqw6IbhMxCEn75697+9q+e/hLbyf8stNXA9ILOoa6A60ECqe5nqkUJMssklMdmAEvZjKiRsUGEBL4HCqJD1wmCGwQBZhQNID0gvumEgQPXiCwbCSChgMbyJCxCqAkByWKsAAOKU3EE8uYN4AAAAAElFTkSuQmCC","location":"java-transition/flow.drawio/references/elements/start/index.html","type":{"name":"Start","ns-uri":"ecore://nasdanika.org/models/function-flow"}},{"container":{"reference":"decorator","identifiers":["uuid:97c6d00a-e528-4695-8176-5ea427358d5e"]},"identifiers":["uuid:b73fc05d-ecc7-4c07-8475-b4c39974579d"],"icon":"far fa-question-circle","type":{"name":"Link","ns-uri":"ecore://app.models.nasdanika.org"}},{"container":{"reference":"outgoingConnections","identifiers":["uuid:312eda2e-7479-4f6a-b0d5-da601f1b76e3"],"name":"Start"},"identifiers":["uuid:7569d0e9-2ef6-481f-ae32-61dffe48a8b9"],"name":"Java transition","location":"java-transition/flow.drawio/references/elements/start/references/outgoingConnections/groovy-transition/index.html","type":{"name":"Transition","ns-uri":"ecore://nasdanika.org/models/function-flow"}},{"container":{"reference":"decorator","identifiers":["uuid:d3fe1ce0-fba0-4912-b313-63f8dd62f48b"]},"identifiers":["uuid:410ee761-51e5-4b47-90db-a7aa0c04d473"],"icon":"far fa-question-circle","type":{"name":"Link","ns-uri":"ecore://app.models.nasdanika.org"}},{"container":{"reference":"elements","identifiers":["uuid:d1962745-ef0d-4ed2-bfa5-5cad639761fa"],"name":"Java transition"},"identifiers":["uuid:f9ab544a-1a19-4c3e-badd-0535e1495448"],"name":"End","icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABOUlEQVR4XrWVva4BQRTHhdUothIWiWlEh0bp3v4+h/sA6CXoPYH3EJ0n8BQ+OlHozT0/mU3mjl12fZzkn2x2/ue3c+YcI5OJj5yoJxqJ5kY88461xJEXDcuet+sXi3qhlF42Glfx/CvvWMNjvHdDFbLZzaRS0ftWSx87nUjt222NBy85LiQMFXjedt1s3gDihLckOeS6sDxfSwOzoWan/8ofUoJrTipyYYSwHIfMudimL9/X3bqK1Les2V7O25R+7X6PzrlfJfF4OkeqK912/UwELIAjxsE1pAXCgAVwzoy5hrRAGLA+Anx7yW9pCoywKfFjI4lRYs32HiTXHhvipcGeVavsbhDCiKd/eqLLNAjGMGwgkfpyAPbj+ysXZEei64szo8xprcbOHsbDC9Y0gDO7KfNePPUX8AdMzngNRwlZnAAAAABJRU5ErkJggg==","location":"java-transition/flow.drawio/references/elements/end/index.html","type":{"name":"End","ns-uri":"ecore://nasdanika.org/models/function-flow"}},{"container":{"reference":"decorator","identifiers":["uuid:65f67c87-dbc9-4d3e-a910-b5e434fc8dd1"]},"identifiers":["uuid:04d2edf5-6d4d-4a37-90c4-bf33fbca9a30"],"icon":"far fa-question-circle","type":{"name":"Link","ns-uri":"ecore://app.models.nasdanika.org"}},{"container":{"reference":"decorator","identifiers":["uuid:c4c543c1-c1be-40bd-b39e-c20b0e699887"]},"identifiers":["uuid:c1866d76-b2e8-4ee3-8323-e027f8a4ebd2"],"icon":"far fa-question-circle","description":"Domains allow to organize architecture description elements into a hierarchy","type":{"name":"Link","ns-uri":"ecore://app.models.nasdanika.org"}}],
+			        	identifierField: false,
+			        	hideUUID: true
+				  },				  
+				  computed: {			
+					fields: function() {
+			        	let fields = [
+			                {
+			                  key: 'element',
+			                  label: "Element",
+			                  sortable: false
+			                },
+			                {
+			                  key: 'description',
+			                  label: 'Description',
+			                  sortable: true
+			                }
+			              ];
+			        	
+			        	if (this.identifierField) {
+			        		fields.push(			                {
+				                  key: 'identifiers',
+				                  label: "Identifier(s)",
+				                  sortable: true
+				            });
+			        	}
+						return fields;
+					},  
+					items: function() {
+						const ret = []; 
+						for (let idx in this.semanticInfo) {
+							let semanticEntry = this.semanticInfo[idx];
+							let entry = {
+								identifiers: [],
+								element: {}
+							};
+							
+							if (semanticEntry.location) {
+								entry.element.location = semanticEntry.location;
+							}
+							if (semanticEntry.name) {
+								entry.element.name = semanticEntry.name;
+							}
+							if (semanticEntry.icon) {
+								entry.element.icon = semanticEntry.icon;
+							}
+							if (semanticEntry.description) {
+								entry.description = semanticEntry.description;
+							}
+							
+							if (semanticEntry.identifiers) {
+								for (let iIdx in semanticEntry.identifiers) {
+									let identifier = semanticEntry.identifiers[iIdx];
+									if (this.hideUUID && identifier && identifier.startsWith("uuid:")) {
+										continue;
+									}
+									entry.identifiers.push({
+										value: identifier,
+										onClick: "navigator.clipboard.writeText('" + identifier +"')"							
+									});
+								}
+							}
+
+							ret.push(entry);
+						}
+						
+						return ret.filter(item => {
+							if (item.identifiers.length == 0) {
+								return false;
+							}
+							if (this.filter && this.filter.length > 1) {
+								for (let identifierItem in item.identifiers) {
+									let identifier = item.identifiers[identifierItem].value;
+									if (identifier && identifier.toLowerCase().includes(this.filter.toLowerCase())) {
+										return true;
+									}									
+								}
+								if (item.description && item.description.toLowerCase().includes(this.filter.toLowerCase())) {
+									return true;
+								}
+								if (item.element.name && item.element.name.toLowerCase().includes(this.filter.toLowerCase())) {
+									return true;
+								}
+								return false;
+							}
+							return true;
+						}).sort((a, b) => {
+							if (a.element.name) {
+								if (b.element.name) {
+									return a.element.name.localeCompare(b.element.name);
+								}					
+								return -1;
+							}
+							return 1;
+						}); 						
+					}
+				  }
+			});   			
+		</script>
+				
+		</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col nsd-app-footer">
+          <ul class="nav nsd-app-footer-navs">
+            <li class="nav-item">
+              <a href="https://github.com/Nasdanika-Demos/internet-banking-system-c4" data-nsd-label-uuid="4fa4bb5d-89c5-479d-b6bb-a2353118dd01" class="nav-link"><span class="fab fa-github nsd-app-label-icon"></span>Sources</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

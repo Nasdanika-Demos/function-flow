@@ -88,4 +88,39 @@ public class TestFlowExecution extends TestFlowExecutionBase {
 		});
 	}
 	
+	@Test
+	public void testJavaTransition() throws IOException, InterruptedException {
+		Function<End, Invocable> endResolver = end -> {
+			return new Invocable() {
+				
+				@SuppressWarnings("unchecked")
+				@Override
+				public <T> T invoke(Object... args) {
+					System.out.println("[" + Thread.currentThread().getName() + "] End invoked: " + end + " " + args);
+					return (T) "Purum";
+				}
+			};
+		};
+		execute("java-transition/flow.drawio", endResolver, this::onJavaTransition); 
+	}
+	
+	protected void onJavaTransition(Map<Element, ProcessorInfo<FlowElementProcessor<EObject>>> processors) {
+				
+		// Start processor
+		FlowElementProcessor<?> startProcessor = processors
+				.entrySet()
+				.stream()
+				.filter(e -> e.getKey() instanceof NodeAdapter && ((NodeAdapter) e.getKey()).get() instanceof Start)
+				.map(Entry::getValue)
+				.map(ProcessorInfo::getProcessor)
+				.findAny()
+				.get();
+		
+		Map<Object, CompletableFuture<?>> result = startProcessor.invoke("Hello");
+		result.values().forEach(cp -> {
+			System.out.println(cp);
+			cp.whenComplete((r, e) -> System.out.println(">>> " + r + " === " + e));	
+		});
+	}
+	
 }
