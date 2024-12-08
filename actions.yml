@@ -9,6 +9,7 @@ app.Action:
         text: Function Flow Demos
         children:
           - app.ActionReference: "target/action-models/simple/flow.drawio.xmi#/"
+          - app.ActionReference: "target/action-models/groovy-transition/flow.drawio.xmi#/"
     - app.Action:
         location: ${base-uri}search.html
         icon: fas fa-search
