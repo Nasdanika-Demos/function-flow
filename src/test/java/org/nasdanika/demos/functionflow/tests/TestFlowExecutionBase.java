@@ -2,7 +2,6 @@ package org.nasdanika.demos.functionflow.tests;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.Executor;
@@ -10,7 +9,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -35,14 +33,14 @@ import org.nasdanika.graph.processor.HandlerType;
 import org.nasdanika.graph.processor.ProcessorConfig;
 import org.nasdanika.graph.processor.ProcessorConfigFactory;
 import org.nasdanika.graph.processor.ProcessorInfo;
-import org.nasdanika.models.functionflow.End;
+import org.nasdanika.models.functionflow.Flow;
 import org.nasdanika.models.functionflow.processors.runtime.FlowElementProcessor;
+import org.nasdanika.models.functionflow.processors.runtime.FlowProcessor;
 
 public class TestFlowExecutionBase {
 		
 	protected Map<org.nasdanika.graph.Element, ProcessorInfo<FlowElementProcessor<EObject>>> createProcessors(
 			String demoPath,
-			Function<End,Invocable> endResolver, 
 			Executor executor,
 			Context context, 
 			ProgressMonitor progressMonitor) throws IOException {
@@ -82,7 +80,7 @@ public class TestFlowExecutionBase {
 				FlowElementProcessor.class, 
 				Invocable.class, 
 				Invocable.class, 
-				endResolver, 
+				null, 
 				capabilityLoader); 
 		
 		return processorFactory.createProcessors(configs.values(), false, progressMonitor);
@@ -90,8 +88,8 @@ public class TestFlowExecutionBase {
 	
 	protected void execute(
 		String path,	
-		Function<End,Invocable> endResolver, 
-		Consumer<Map<Element, ProcessorInfo<FlowElementProcessor<EObject>>>> operator) throws IOException, InterruptedException {
+		Invocable target, 
+		Consumer<FlowProcessor<Flow>> operator) throws IOException, InterruptedException {
 		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
 		Context context = Context.EMPTY_CONTEXT;
 		
@@ -99,39 +97,44 @@ public class TestFlowExecutionBase {
 		
 		Map<Element, ProcessorInfo<FlowElementProcessor<EObject>>> processors = createProcessors(
 				path, 
-				endResolver,
 				executor,
 				context, 
 				progressMonitor);
 		processors.forEach((k,v) -> System.out.println(k + " -> " + v.getProcessor()));
 		
-		List<FlowElementProcessor<EObject>> roots = processors
+		@SuppressWarnings("unchecked")
+		FlowProcessor<Flow> flowProcessor = processors
 			.values()
 			.stream()
 			.map(ProcessorInfo::getProcessor)
 			.filter(Objects::nonNull)
-			.filter(p -> p.parentProcessor == null)			
-			.toList();
+			.filter(p -> p.parentProcessor == null)
+			.filter(FlowProcessor.class::isInstance)
+			.map(FlowProcessor.class::cast)
+			.findAny()
+			.get();
 		
-		// Starting roots
+		flowProcessor.setTarget(target);
+		
+		// Starting
 		System.out.println("=== Strting ===");
-		roots.forEach(p -> p.start(progressMonitor));
+		flowProcessor.start(progressMonitor);
 		
 		System.out.println("=== Executing ===");		
-		operator.accept(processors);
+		operator.accept(flowProcessor);
 		
-		// Stopping roots
+		// Stopping
 		System.out.println("=== Stopping ===");
-		roots.forEach(p -> p.stop(progressMonitor));
+		flowProcessor.stop(progressMonitor);
 		
 		// Shutting down executor
 		System.out.println("=== Shutting down executor ===");
 		executor.shutdown();
 		executor.awaitTermination(10, TimeUnit.SECONDS);
 
-		// Closing roots
+		// Closing
 		System.out.println("=== Closing ===");
-		roots.forEach(p -> p.close(progressMonitor));
+		flowProcessor.close(progressMonitor);
 	}
 	
 }

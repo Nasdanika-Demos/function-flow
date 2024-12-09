@@ -1,12 +1,12 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/25.0.1 Chrome/128.0.6613.186 Electron/32.2.6 Safari/537.36" version="25.0.1">
-  <diagram id="Ib9TQcT8DTWy8I6IAeJE" name="Groovy transition">
+  <diagram id="Ib9TQcT8DTWy8I6IAeJE" name="Transition">
     <mxGraphModel dx="1434" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <object label="" mapping="type: Flow&#xa;page-element: true&#xa;doc-ref: README.md&#xa;features:&#xa;  container:&#xa;    self: &#xa;      elements:&#xa;        path: 2&#xa;" id="0">
           <mxCell />
         </object>
         <mxCell id="1" parent="0" />
-        <object label="Groovy transition" mapping="type: Transition&#xa;configuration:&#xa;  implementation: transition.groovy&#xa;features:&#xa;  source: outgoingConnections&#xa;  end: target" id="groovy-transition">
+        <object label="Transition" mapping="type: Transition&#xa;features:&#xa;  source: outgoingConnections&#xa;  end: target" id="xk7Y4A1bgm_LZquDNImR-3">
           <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0000FF;fontColor=none;noLabel=1;" parent="1" source="start" target="end" edge="1">
             <mxGeometry relative="1" as="geometry" />
           </mxCell>

@@ -2,87 +2,47 @@ package org.nasdanika.demos.functionflow.tests;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
 
-import org.eclipse.emf.ecore.EObject;
 import org.junit.jupiter.api.Test;
 import org.nasdanika.common.Invocable;
-import org.nasdanika.graph.Element;
-import org.nasdanika.graph.model.adapters.NodeAdapter;
-import org.nasdanika.graph.processor.ProcessorInfo;
-import org.nasdanika.models.functionflow.End;
-import org.nasdanika.models.functionflow.Start;
-import org.nasdanika.models.functionflow.processors.runtime.FlowElementProcessor;
+import org.nasdanika.models.functionflow.Flow;
+import org.nasdanika.models.functionflow.processors.runtime.FlowProcessor;
 
 public class TestFlowExecution extends TestFlowExecutionBase {
+
+	private Invocable target = new Invocable() {
+		
+		@SuppressWarnings("unchecked")
+		@Override
+		public <T> T invoke(Object... args) {
+			System.out.println("[" + Thread.currentThread().getName() + "] Target invoked: " + args);
+			return (T) "Purum";
+		}
+	};
+	
 	
 	@Test
-	public void testSimple() throws IOException, InterruptedException {
-		Function<End, Invocable> endResolver = end -> {
-			return new Invocable() {
-				
-				@SuppressWarnings("unchecked")
-				@Override
-				public <T> T invoke(Object... args) {
-					System.out.println("End invoked: " + end + " " + args);
-					return (T) "Purum";
-				}
-			};
-		};
-		execute("simple/flow.drawio", endResolver, this::onSimple); 
+	public void testTransition() throws IOException, InterruptedException {
+		execute("transition/flow.drawio", target, this::onTransition); 
 	}
 	
-	protected void onSimple(Map<Element, ProcessorInfo<FlowElementProcessor<EObject>>> processors) {
-				
-		// Start processor
-		FlowElementProcessor<?> startProcessor = processors
-				.entrySet()
-				.stream()
-				.filter(e -> e.getKey() instanceof NodeAdapter && ((NodeAdapter) e.getKey()).get() instanceof Start)
-				.map(Entry::getValue)
-				.map(ProcessorInfo::getProcessor)
-				.findAny()
-				.get();
-		
-		Map<Object, CompletableFuture<?>> result = startProcessor.invoke("Hello");
-		result.values().forEach(cp -> {
+	protected void onTransition(FlowProcessor<Flow> flowProcessor) {
+		Map<Object, Map<?,CompletableFuture<?>>> result = flowProcessor.invoke("Hello");
+		result.values().stream().flatMap(m -> m.values().stream()).forEach(cp -> {
 			System.out.println(cp);
-			cp.whenComplete((r, e) -> System.out.println(">>> " + r + " " + e));	
+			cp.whenComplete((r, e) -> System.out.println(">>> " + r + " === " + e));	
 		});
 	}
 		
 	@Test
 	public void testGroovyTransition() throws IOException, InterruptedException {
-		Function<End, Invocable> endResolver = end -> {
-			return new Invocable() {
-				
-				@SuppressWarnings("unchecked")
-				@Override
-				public <T> T invoke(Object... args) {
-					System.out.println("End invoked: " + end + " " + args);
-					return (T) "Purum";
-				}
-			};
-		};
-		execute("groovy-transition/flow.drawio", endResolver, this::onGroovyTransition); 
+		execute("groovy-transition/flow.drawio", target, this::onGroovyTransition); 
 	}
 	
-	protected void onGroovyTransition(Map<Element, ProcessorInfo<FlowElementProcessor<EObject>>> processors) {
-				
-		// Start processor
-		FlowElementProcessor<?> startProcessor = processors
-				.entrySet()
-				.stream()
-				.filter(e -> e.getKey() instanceof NodeAdapter && ((NodeAdapter) e.getKey()).get() instanceof Start)
-				.map(Entry::getValue)
-				.map(ProcessorInfo::getProcessor)
-				.findAny()
-				.get();
-		
-		Map<Object, CompletableFuture<?>> result = startProcessor.invoke("Hello");
-		result.values().forEach(cp -> {
+	protected void onGroovyTransition(FlowProcessor<Flow> flowProcessor) {
+		Map<Object, Map<?,CompletableFuture<?>>> result = flowProcessor.invoke("Hello");
+		result.values().stream().flatMap(m -> m.values().stream()).forEach(cp -> {
 			System.out.println(cp);
 			cp.whenComplete((r, e) -> System.out.println(">>> " + r + " === " + e));	
 		});
@@ -90,37 +50,25 @@ public class TestFlowExecution extends TestFlowExecutionBase {
 	
 	@Test
 	public void testJavaTransition() throws IOException, InterruptedException {
-		Function<End, Invocable> endResolver = end -> {
-			return new Invocable() {
-				
-				@SuppressWarnings("unchecked")
-				@Override
-				public <T> T invoke(Object... args) {
-					System.out.println("[" + Thread.currentThread().getName() + "] End invoked: " + end + " " + args);
-					return (T) "Purum";
-				}
-			};
-		};
-		execute("java-transition/flow.drawio", endResolver, this::onJavaTransition); 
+		execute("java-transition/flow.drawio", target, this::onJavaTransition); 
 	}
 	
-	protected void onJavaTransition(Map<Element, ProcessorInfo<FlowElementProcessor<EObject>>> processors) {
-				
-		// Start processor
-		FlowElementProcessor<?> startProcessor = processors
-				.entrySet()
-				.stream()
-				.filter(e -> e.getKey() instanceof NodeAdapter && ((NodeAdapter) e.getKey()).get() instanceof Start)
-				.map(Entry::getValue)
-				.map(ProcessorInfo::getProcessor)
-				.findAny()
-				.get();
-		
-		Map<Object, CompletableFuture<?>> result = startProcessor.invoke("Hello");
-		result.values().forEach(cp -> {
+	protected void onJavaTransition(FlowProcessor<Flow> flowProcessor) {
+		Map<Object, Map<?,CompletableFuture<?>>> result = flowProcessor.invoke("Hello");
+		result.values().stream().flatMap(m -> m.values().stream()).forEach(cp -> {
 			System.out.println(cp);
 			cp.whenComplete((r, e) -> System.out.println(">>> " + r + " === " + e));	
 		});
+	}
+	
+	@Test
+	public void testCall() throws IOException, InterruptedException {
+		execute("call/flow.drawio", target, this::onCall); 
+	}
+	
+	protected void onCall(FlowProcessor<Flow> flowProcessor) {
+		Map<Object, Object> result = flowProcessor.invoke("Hello");
+		result.values().forEach(System.out::println);
 	}
 	
 }
