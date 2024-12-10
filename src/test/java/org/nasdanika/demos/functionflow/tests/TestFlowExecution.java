@@ -2,6 +2,7 @@ package org.nasdanika.demos.functionflow.tests;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
@@ -21,7 +22,7 @@ public class TestFlowExecution extends TestFlowExecutionBase {
 		@SuppressWarnings("unchecked")
 		@Override
 		public <T> T invoke(Object... args) {
-			System.out.println("[" + Thread.currentThread().getName() + "] Target invoked: " + args);
+			System.out.println("[" + Thread.currentThread().getName() + "] Target invoked: " + Arrays.toString(args));
 			return (T) "Purum";
 		}
 	};
@@ -40,7 +41,7 @@ public class TestFlowExecution extends TestFlowExecutionBase {
 	private ExecutionListener executionListener = new ExecutionListener() {
 		
 		@Override
-		public void onInvoke(
+		public synchronized void onInvoke(
 				Instant start, 
 				Instant end, 
 				FlowElementProcessor<?> processor, 
@@ -55,14 +56,13 @@ public class TestFlowExecution extends TestFlowExecutionBase {
 			System.out.println("\tEnd: " + end);
 			System.out.println("\tProcessor: " + processor);
 			System.out.println("\tActivator: " + activator);
-			System.out.println("\tArgs: " + args);
+			System.out.println("\tArgs: " + Arrays.toString(args));
 			System.out.println("\tResult: " + result);
 			System.out.println("\tException: " + exception);
 			
 		}
 	};
-	
-	
+		
 	@Test
 	public void testTransition() throws IOException, InterruptedException {
 		execute("transition/flow.drawio", target, exceptionHandler, executionListener, this::onTransition); 
