@@ -34,6 +34,8 @@ import org.nasdanika.graph.processor.ProcessorConfig;
 import org.nasdanika.graph.processor.ProcessorConfigFactory;
 import org.nasdanika.graph.processor.ProcessorInfo;
 import org.nasdanika.models.functionflow.Flow;
+import org.nasdanika.models.functionflow.processors.runtime.ExceptionHandler;
+import org.nasdanika.models.functionflow.processors.runtime.ExecutionListener;
 import org.nasdanika.models.functionflow.processors.runtime.FlowElementProcessor;
 import org.nasdanika.models.functionflow.processors.runtime.FlowProcessor;
 
@@ -89,6 +91,8 @@ public class TestFlowExecutionBase {
 	protected void execute(
 		String path,	
 		Invocable target, 
+		ExceptionHandler exceptionHandler,
+		ExecutionListener executionLister,
 		Consumer<FlowProcessor<Flow>> operator) throws IOException, InterruptedException {
 		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
 		Context context = Context.EMPTY_CONTEXT;
@@ -114,7 +118,9 @@ public class TestFlowExecutionBase {
 			.findAny()
 			.get();
 		
-		flowProcessor.setTarget(target);
+		flowProcessor.setTarget(target);		
+		flowProcessor.setExceptionHandler(exceptionHandler);
+		flowProcessor.setExecutionListener(executionLister);
 		
 		// Starting
 		System.out.println("=== Strting ===");
